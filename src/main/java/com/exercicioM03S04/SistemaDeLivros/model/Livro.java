@@ -23,5 +23,58 @@ public class Livro {
     @OneToMany(mappedBy = "livro", cascade = CascadeType.ALL)
     private List<Avaliacao> avaliacoes;
 
+    public Livro(Long id) {
+
+    }
+
+    public Livro(Long id, String titulo, Usuario usuario, int anoPublicacao, List<Avaliacao> avaliacoes) {
+        this.id = id;
+        this.titulo = titulo;
+        this.usuario = usuario;
+        this.anoPublicacao = anoPublicacao;
+        this.avaliacoes = avaliacoes;
+    }
+
     // Getters e Setters
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public int getAnoPublicacao() {
+        return anoPublicacao;
+    }
+
+    public List<Avaliacao> getAvaliacoes() {
+        return avaliacoes;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public void setAnoPublicacao(int anoPublicacao) {
+        this.anoPublicacao = anoPublicacao;
+    }
+
+    public void setAvaliacoes(List<Avaliacao> avaliacoes) {
+        this.avaliacoes = avaliacoes;
+    }
 }

@@ -1,7 +1,9 @@
 package com.exercicioM03S04.SistemaDeLivros.controller;
 
+import com.exercicioM03S04.SistemaDeLivros.dto.CreateUserRequest;
 import com.exercicioM03S04.SistemaDeLivros.model.Usuario;
 import com.exercicioM03S04.SistemaDeLivros.service.UsuarioService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,5 +25,10 @@ public class UsuarioController {
         return new ResponseEntity<>(novoUsuario, HttpStatus.CREATED);
     }
 
-    // Outros endpoints do usuário, se necessário
+    @PostMapping
+    public ResponseEntity<Usuario> createUser(@Valid @RequestBody CreateUserRequest request) {
+        Usuario usuario = new Usuario(request.nome(), request.email(), request.senha());
+        Usuario novoUsuario = usuarioService.salvarUsuario(usuario);
+        return new ResponseEntity<>(novoUsuario, HttpStatus.CREATED);
+    }
 }
